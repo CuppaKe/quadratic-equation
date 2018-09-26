@@ -1,19 +1,16 @@
 module.exports = function solveEquation(equation) {
 
-	let bin = equation.replace(/\s/g, "GG")
-	let arr = bin.split("GG")
-
+	let arr = equation.replace(/\s/g, '').match(/(\+|\-|\d)\d{1,}/g);
 	let a = +arr[0];
-	let b = +arr.slice(3,5).join("");
-	let c = +arr.slice(7,9).join("");
+	let b = +arr[1];
+	let c = +arr[2];
 
-	let disc = Math.pow(b,2) - 4*a*c;
-	let x1 = Math.round((-b + Math.sqrt(disc))/(2*a));
-	let x2 = Math.round((-b - Math.sqrt(disc))/(2*a));
+	let disc = Math.pow(b, 2) - 4 * a * c;
+	let x1 = Math.round((-b + Math.sqrt(disc)) / (2 * a));
+	let x2 = Math.round((-b - Math.sqrt(disc)) / (2 * a));
 
-	return [x1,x2].sort(function (a,b) {
-		return a-b;
-	})
+	return [x1,x2].sort((a, b) => a - b);
+	
 }
  
 
